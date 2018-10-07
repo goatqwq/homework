@@ -156,6 +156,10 @@ Action: Monster -> Destroy
 
 * `然后我们需要一个记分板，让我们回到layout 1界面创建一个新图层，命名为HUD并在HUD中双击鼠标左键，找到text类型并双击，单击一下变为十字的光标放置记分板，可在左侧属性栏的Font处更改其字体，在Color处更改颜色。在system every tick这一事件下添加action  text->text目录下的set text并输入  "Score: " & Score`
 
+![](images/作业.gif)
+
+**成品演示（局部）**
+
 
 
 
