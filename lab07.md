@@ -118,27 +118,27 @@ while(x <= 10){
 
 写出机器语言的计算过程
 
-LOD #10  
+0   LOD #10  
 
-STO Y  
+2   STO X  
 
-LOD Y  
+4   LOD X  
 
-ADD X  
+6   ADD Y  
 
-STO X  
+8   STO Y  
 
-LOD Y  
+10  LOD X  
 
-SUB #1  
+12  SUB #1  
 
-STO Y  
+14  STO X  
 
-CPZ Y  
+16  CPZ X  
 
-JMZ 4  
+18  JMZ 4  
 
-HLT
+20  HLT
 
 用自己的语言，简单总结高级语言与机器语言的区别与联系。
 
