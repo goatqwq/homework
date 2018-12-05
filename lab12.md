@@ -53,12 +53,13 @@ void Gameover(void){/*游戏结束*/
         "*         *",
         "*         *",
         "***********"
-    };
+    };    
     system("cls");
     int i;
     for(i=0;i<12;i++){
         printf("%s\n",map_GG[i]);
     }
+	system("pause");
 }
 void BodyMove(int snakelen){
     int i;
