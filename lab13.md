@@ -141,6 +141,7 @@ int main(void){
 #define WALL_CELL '*'
 
 int GG=0;
+char mirror_direct = 'A';
 char map[12][12]={
     {"***********"},
     {"*XXXXH    *"},
@@ -222,57 +223,81 @@ void Snake_Move(int snakelen){
     char direct=getchar();
     switch(direct){
         case 'a':
-        case 'A':if(map[snake_X[snakelen - 1]][snake_Y[snakelen - 1] - 1] == ' '){/*判断条件：脖子不在头的要转向的方向*/
+        case 'A':
+		if(direct == mirror_direct||direct == mirror_direct - 'A' + 'a'){
+			break;
+		}
+		else if(map[snake_X[snakelen - 1]][snake_Y[snakelen - 1] - 1] == ' '){/*判断条件：脖子不在头的要转向的方向*/
 			BodyMove(snakelen);
 			int dy = -1,dx = 0;
             HeadMove(dy,dx,snakelen);
+            mirror_direct = 'D';
         }
         else if(map[snake_X[snakelen - 1]][snake_Y[snakelen - 1] - 1] == '$'){
 			int dy = -1,dx = 0;
             HeadChange(dy,dx,snakelen);
             Create_Food();
+            mirror_direct = 'D';
 		}
 		else{
 			GG = 1;
 		}break;
         case 'w':
-        case 'W':if(map[snake_X[snakelen - 1] - 1][snake_Y[snakelen - 1]] == ' '){
+        case 'W':
+		if(direct == mirror_direct||direct == mirror_direct - 'A' + 'a'){
+			break;
+		}
+		else if(map[snake_X[snakelen - 1] - 1][snake_Y[snakelen - 1]] == ' '){
 			BodyMove(snakelen);
             int dy = 0,dx = -1;
             HeadMove(dy,dx,snakelen);
+            mirror_direct = 'S';
         }
         else if(map[snake_X[snakelen - 1] - 1][snake_Y[snakelen - 1]] == '$'){
 			int dy = 0,dx = -1;
             HeadChange(dy,dx,snakelen);
             Create_Food();
+            mirror_direct = 'S';
 		}
 		else{
 			GG = 1;
 		}break;
         case 's':
-        case 'S':if(map[snake_X[snakelen - 1] + 1][snake_Y[snakelen - 1]] == ' '){
+        case 'S':
+		if(direct == mirror_direct||direct == mirror_direct - 'A' + 'a'){
+			break;
+		}
+		else if(map[snake_X[snakelen - 1] + 1][snake_Y[snakelen - 1]] == ' '){
 			BodyMove(snakelen);
             int dy = 0,dx = 1;
             HeadMove(dy,dx,snakelen);
+            mirror_direct = 'W';
         }
         else if(map[snake_X[snakelen - 1] + 1][snake_Y[snakelen - 1]] == '$'){
 			int dy = 0,dx = 1;
             HeadChange(dy,dx,snakelen);
             Create_Food();
+            mirror_direct = 'W';
 		}
 		else{
 			GG = 1;
 		}break;
         case 'd':
-        case 'D':if(map[snake_X[snakelen - 1]][snake_Y[snakelen - 1] + 1] == ' '){ 
+        case 'D':
+		if(direct == mirror_direct||direct == mirror_direct - 'A' + 'a'){
+			break;
+		}
+		else if(map[snake_X[snakelen - 1]][snake_Y[snakelen - 1] + 1] == ' '){ 
 		    BodyMove(snakelen);
             int dy = 1,dx = 0;
             HeadMove(dy,dx,snakelen);
+            mirror_direct = 'A';
         }
         else if(map[snake_X[snakelen - 1]][snake_Y[snakelen - 1] + 1] == '$'){
 			int dy = 1,dx = 0;
             HeadChange(dy,dx,snakelen);
             Create_Food();
+            mirror_direct = 'A';
 		}
 		else{
 			GG = 1;
